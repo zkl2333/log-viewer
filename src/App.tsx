@@ -1,35 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import XtermLog from "./components/XtermLog";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [fontSize, setFontSize] = useState(14);
+  const [renderType, setRenderType] = useState("WebGL");
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div
+      style={{
+        position: "absolute",
+        inset: 0,
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 10,
+          padding: 10,
+          fontSize: 12,
+        }}
+      >
+        <div>
+          字体大小：
+          <button onClick={() => setFontSize((prev) => prev - 1)}>-</button>
+          <span>{fontSize}</span>
+          <button onClick={() => setFontSize((prev) => prev + 1)}>+</button>
+        </div>
+        <div>
+          渲染方式：
+          <button
+            onClick={() => {
+              setRenderType("HTML");
+            }}
+          >
+            HTML
+          </button>
+          <button
+            onClick={() => {
+              setRenderType("Canvas");
+            }}
+          >
+            Canvas
+          </button>
+          <button
+            onClick={() => {
+              setRenderType("WebGL");
+            }}
+          >
+            WebGL
+          </button>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <div
+        style={{
+          flex: 1,
+        }}
+      >
+        <XtermLog fontSize={fontSize} renderType={renderType} />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default App
+export default App;
