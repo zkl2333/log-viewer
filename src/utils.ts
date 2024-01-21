@@ -129,7 +129,7 @@ function tokensToAnsi(tokens: any[]) {
   return tokens
     .map((token) => {
       if (typeof token === "string") {
-        return token; // 普通文本，不改变
+        return `${hexToAnsi16m("#999999")}${token}\x1b[0m`
       } else {
         let key = token.type;
         if (key === "level") {

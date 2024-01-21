@@ -3,8 +3,7 @@ import XtermLog from "./components/XtermLog";
 import "./App.css";
 
 const App = () => {
-  const [fontSize, setFontSize] = useState(14);
-  const [renderType, setRenderType] = useState("WebGL");
+  const [fontSize, setFontSize] = useState(12);
 
   return (
     <div
@@ -30,37 +29,13 @@ const App = () => {
           <span>{fontSize}</span>
           <button onClick={() => setFontSize((prev) => prev + 1)}>+</button>
         </div>
-        <div>
-          渲染方式：
-          <button
-            onClick={() => {
-              setRenderType("HTML");
-            }}
-          >
-            HTML
-          </button>
-          <button
-            onClick={() => {
-              setRenderType("Canvas");
-            }}
-          >
-            Canvas
-          </button>
-          <button
-            onClick={() => {
-              setRenderType("WebGL");
-            }}
-          >
-            WebGL
-          </button>
-        </div>
       </div>
       <div
         style={{
           flex: 1,
         }}
       >
-        <XtermLog fontSize={fontSize} renderType={renderType} />
+        <XtermLog fontSize={fontSize} />
       </div>
     </div>
   );

@@ -1,5 +1,15 @@
-.xterm {
-  padding: 10px;
-  position: absolute;
-  inset: 0;
+/* 滚动槽 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background: rgba(158, 158, 158, 0.185);
+  box-shadow: inset 0 0 0px #000000;
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #ffffff80;
 }
